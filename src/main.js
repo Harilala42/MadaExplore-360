@@ -5,22 +5,22 @@ var currentIndex = 0,
     dataTourist = [
         {
             name: "Avenue de l'indépendance",
-            img: "/assets/avenue-de-lindependance.png",
+            img: "../assets/avenue-de-lindependance.png",
             link: ""
         },
         {
             name: "Rova de Manjakamiadana",
-            img: "/assets/rova-manjakamiadana.png",
+            img: "../assets/rova-manjakamiadana.png",
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },
         {
             name: "Zoo de Tsimbazaza",
-            img: "/assets/zoo-tsimbazaza.png",
+            img: "../assets/zoo-tsimbazaza.png",
             link: ""
         },
         {
             name: "Hôtel Radison Blu",
-            img: "/assets/radison-blu.png",
+            img: "../assets/radison-blu.png",
             link: ""
         },
     ];
@@ -149,7 +149,7 @@ window.onload = () => {
                 selectedItem = dataTourist[(currentIndex + selectedIndex) % dataTourist.length];
             
             localStorage.setItem('selectedTouristSite', JSON.stringify(selectedItem));
-            window.location.href = "/assets/360.html";
+            window.location.href = "https://madaexplore-360.onrender.com/360.html";
         } else {
             let popup = document.getElementById("custom-popup");
             popup.style.display = "flex";
