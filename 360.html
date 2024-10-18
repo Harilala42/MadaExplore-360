@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="./img/lg.png" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MadaExplore 360</title>
+        <style>
+            *  {
+                margin: 0;
+                padding: 0;
+            }
+
+            @font-face {
+                font-family: 'Roboto';
+                src: url('fonts/Roboto-Bold.ttf') format('truetype');
+            }
+
+            html, body {
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #video360 {
+                width: 100%;
+                height: 100%;
+            }
+
+            .icon {
+                margin-right: 10px;
+                width: 50px;
+                height: 50px;
+            }
+
+            #fullscreen-btn {
+                position: absolute; 
+                bottom: 5px;       
+                right: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-image: linear-gradient(to right, #444ec4, #8b77a5);
+                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+                transition: background-color 1.5s ease;
+                color: #fff;
+                padding: 5px 10px;
+                font-size: 1.1rem;
+                font-weight: bold;
+                text-align: left;
+                text-decoration: none;
+                border: none;
+                border-radius: 50px;
+                width: 200px;
+                padding: 10px 0;
+                z-index: 2;
+            }
+
+            #fullscreen-btn:hover {
+                background-image: linear-gradient(to right, #8b77a5, #444ec4);
+                cursor: pointer;
+            }
+
+            iframe {
+                position: relative;
+                z-index: 1;
+            }
+
+            #loadingScreen {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #022d50;
+                z-index: 10;
+            }
+
+            #logo {
+                width: 380px;
+                height: 200px;
+                margin-bottom: 15px;
+            }
+
+            #loader {
+                border: 8px solid #f3f0f7;
+                border-top: 8px solid #93e864;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="loadingScreen">
+            <img id="logo" src="./img/light.png" alt="Logo">
+            <div id="loader"></div>
+        </div>
+        <button id="fullscreen-btn"><img class="icon" src="./img/fullscreen.png" alt="FullScreen"><p class="p-btn">Mode<br>FullScreen</p></button>
+        <div id="video360"></div>
+
+        <script>
+            window.onload = function() {
+                function getDataFromLocalStorage() {
+                    let selectedItem = localStorage.getItem('selectedTouristSite');
+                    if (selectedItem)
+                        selectedItem = JSON.parse(selectedItem);
+                    localStorage.removeItem('selectedTouristSite');
+
+                    return (selectedItem.link);
+                }
+                let video360 = getDataFromLocalStorage();
+                document.getElementById("video360").innerHTML =    
+                    `<iframe id="youtube-video" width="100%" height="100%" src="${video360}&controls=0&rel=0&autoplay=1" 
+                        title="video 360" frameborder="0" 
+                        allow="autoplay; fullscreen" 
+                        allowfullscreen>
+                    </iframe>`;
+
+                const loader = document.getElementById('loadingScreen');
+                loader.style.display = 'none';
+
+                document.getElementById("fullscreen-btn").addEventListener("click", function() {
+                    let iframe = document.getElementById("youtube-video");
+                    let requestFullScreen = iframe.requestFullscreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullscreen || iframe.msRequestFullscreen;
+
+                    if (requestFullScreen)
+                        requestFullScreen.call(iframe);
+                });
+            };
+        </script>
+    </body>
+</html>
