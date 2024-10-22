@@ -5,22 +5,22 @@ var currentIndex = 0,
     dataTourist = [
         {
             name: "Avenue de l'indépendance",
-            img: "https://drive.google.com/uc?export=view&id=16E0SeYWNeSbz5WZpzCO2-5RrKwSXBnrJ",
+            img: "../public/avenue-de-lindependance.png",
             link: ""
         },
         {
             name: "Rova de Manjakamiadana",
-            img: "https://drive.google.com/uc?export=view&id=1NaWfNZ0cqJtre2mGCbUyWQdWJf58D5iw",
+            img: "../public/rova-manjakamiadana.png",
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },
         {
             name: "Zoo de Tsimbazaza",
-            img: "https://drive.google.com/uc?export=view&id=1HMJElgBw3spATVXLDyaDfrp_sfT3VfF1",
+            img: "../public/zoo-tsimbazaza.png",
             link: ""
         },
         {
             name: "Hôtel Radison Blu",
-            img: "https://drive.google.com/uc?export=view&id=1uaijz-hgm5_irlZ0EnPoKvEZplPrAVe-",
+            img: "../public/radison-blu.png",
             link: ""
         },
     ];
