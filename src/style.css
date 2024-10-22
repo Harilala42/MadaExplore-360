@@ -5,12 +5,12 @@
 
 @font-face {
   font-family: 'Zawgyi';
-  src: url('../assets/zawgyi-one.ttf') format('truetype');
+  src: url('../public/zawgyi-one.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: url('../assets/Roboto-Bold.ttf') format('truetype');
+  src: url('../public/Roboto-Bold.ttf') format('truetype');
 }
 
 body {
