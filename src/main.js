@@ -55,7 +55,7 @@ window.onload = () => {
             tourristList.innerHTML +=
                 `<li class="img">
                     <div class="link-img">
-                        <img src="${dataTourist[index]}" alt="${dataTourist[index].name}" class="img-link">
+                        <img src="${dataTourist[index]}.img" alt="${dataTourist[index].name}" class="img-link">
                         <p class="txt">${dataTourist[index].name}</p>
                     </div>
                 </li>`;
