@@ -113,10 +113,10 @@
         <script>
             window.onload = function() {
                 function getDataFromLocalStorage() {
-                    let selectedItem = localStorage.getItem('selectedTouristSite');
+                    let selectedItem = localStorage.getItem('userChoice');
                     if (selectedItem)
                         selectedItem = JSON.parse(selectedItem);
-                    localStorage.removeItem('selectedTouristSite');
+                    localStorage.removeItem('userChoice');
 
                     return (selectedItem.link);
                 }
