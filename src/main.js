@@ -5,22 +5,22 @@ var currentIndex = 0,
     dataTourist = [
         {
             name: "Avenue de l'indépendance",
-            img: "https://madaexplore-360.onrender.com/avenue-de-lindependance.png",
+            img: "../public/avenue-de-lindependance.png",
             link: ""
         },
         {
             name: "Rova de Manjakamiadana",
-            img: "https://madaexplore-360.onrender.com/rova-manjakamiadana.png",
+            img: "../public/rova-manjakamiadana.png",
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },
         {
             name: "Zoo de Tsimbazaza",
-            img: "https://madaexplore-360.onrender.com/zoo-tsimbazaza.png",
+            img: "../public/zoo-tsimbazaza.png",
             link: ""
         },
         {
             name: "Hôtel Radison Blu",
-            img: "https://madaexplore-360.onrender.com/radison-blu.png",
+            img: "../public/radison-blu.png",
             link: ""
         },
     ];
