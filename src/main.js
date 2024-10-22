@@ -149,7 +149,7 @@ window.onload = () => {
                 selectedItem = dataTourist[(currentIndex + selectedIndex) % dataTourist.length];
             
             localStorage.setItem('userChoice', JSON.stringify(selectedItem));
-            window.location.href = "http://localhost:5173/360.html";
+            window.location.href = "https://madaexplore-360.onrender.com/360.html";
         } else {
             let popup = document.getElementById("custom-popup");
             popup.style.display = "flex";
