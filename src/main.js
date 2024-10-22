@@ -148,7 +148,7 @@ window.onload = () => {
             let selectedIndex = Array.from(document.getElementsByClassName("link-img")).indexOf(selectedLink),
                 selectedItem = dataTourist[(currentIndex + selectedIndex) % dataTourist.length];
             
-            localStorage.setItem('selectedTouristSite', JSON.stringify(selectedItem));
+            localStorage.setItem('userChoice', JSON.stringify(selectedItem));
             window.location.href = "http://localhost:5173/360.html";
         } else {
             let popup = document.getElementById("custom-popup");
