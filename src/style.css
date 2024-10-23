@@ -1,6 +1,7 @@
 :root {
   --body-width: 100vw;
   --body-height: 100vh;
+  --primary-color: #0e2b47;
 }
 
 @font-face {
@@ -16,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0e2b47;
+  background-color: var(--primary-color);
   color: #fff;
   text-align: center;
 }
@@ -132,6 +133,11 @@ h1 {
   margin: 0 5px;
 }
 
+.p-btn {
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
 .txt {
   position: absolute;
   font-family: 'Roboto';
@@ -141,7 +147,7 @@ h1 {
   left: 50%;
   color: #f4f4f4;
   transform: translate(-50%);
-  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+  text-shadow: 2px 2px 0 var(--primary-color), 2px -2px 0 var(--primary-color), -2px 2px 0 var(--primary-color), -2px -2px 0 var(--primary-color), 2px 0px 0 var(--primary-color), 0px 2px 0 var(--primary-color), -2px 0px 0 var(--primary-color), 0px -2px 0 var(--primary-color);
 }
 
 .check-txt {
@@ -290,7 +296,7 @@ h1 {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #0e2b47;
+  background-color: var(--primary-color);
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
