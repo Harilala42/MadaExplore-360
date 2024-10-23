@@ -1,26 +1,30 @@
 "use strict"
 
+import avenue_de_lindependance from '../public/avenue-de-lindependance.jpg';
+import rova_manjakamiadana from '../public//rova-manjakamiadana.jpg';
+import zoo_tsimbazaza from '../public/zoo-tsimbazaza.jpg';
+
 const itemsToShow = 3;
 var currentIndex = 0,
     dataTourist = [
         {
             name: "Avenue de l'indépendance",
-            img: "/avenue-de-lindependance.jpg",
+            img: avenue_de_lindependance,
             link: ""
         },
         {
             name: "Jardin du Rova",
-            img: "/rova-manjakamiadana.jpg",
+            img: rova_manjakamiadana,
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },
         {
             name: "Zoo de Tsimbazaza",
-            img: "/zoo-tsimbazaza.jpg",
+            img: zoo_tsimbazaza,
             link: ""
         },
         {
             name: "Zoo de Tsimbazaza",
-            img: "/zoo-tsimbazaza.jpg",
+            img: zoo_tsimbazaza,
             link: ""
         }
     ];
