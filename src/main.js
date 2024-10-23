@@ -9,7 +9,7 @@ var currentIndex = 0,
             link: ""
         },
         {
-            name: "Rova de Manjakamiadana",
+            name: "Jardin du Rova",
             img: "../public/rova-manjakamiadana.jpg",
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },

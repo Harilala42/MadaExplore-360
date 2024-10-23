@@ -194,48 +194,6 @@ h1 {
   background-image: linear-gradient(to right, #8b77a5, #444ec4);
 }
 
-.add-content {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 60px;
-  margin-right: 100px;
-  z-index: 4;
-}
-
-.add-content .btn-add-content p {
-  text-align: left;
-}
-
-.btn-add-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  background-color: transparent;
-  color: white;
-  margin-bottom: 18px;
-  padding: 10px 20px;
-  border-radius: 50px;
-  transition: background-color 0.3s ease;
-  width: 250px;
-}
-
-.btn-add-content p {
-  font-family: 'Roboto';
-  font-size: 1.5rem;
-}
-
-.p-btn {
-  font-family: 'Roboto';
-  font-weight: bold;
-}
-
-.btn-add-content:hover {
-  background-color: #1f2a36;
-}
-
 #decoration {
   position: absolute;
   top: 50px;
