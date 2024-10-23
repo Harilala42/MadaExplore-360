@@ -3,6 +3,7 @@
 import avenue_de_lindependance from '../public/avenue-de-lindependance.jpg';
 import rova_manjakamiadana from '../public//rova-manjakamiadana.jpg';
 import zoo_tsimbazaza from '../public/zoo-tsimbazaza.jpg';
+import radison_blu from '../public/radison-blu.jpg';
 
 const itemsToShow = 3;
 var currentIndex = 0,
@@ -23,8 +24,8 @@ var currentIndex = 0,
             link: ""
         },
         {
-            name: "Zoo de Tsimbazaza",
-            img: zoo_tsimbazaza,
+            name: "Hotel Radison Blu",
+            img: radison_blu,
             link: ""
         }
     ];
