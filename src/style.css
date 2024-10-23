@@ -148,7 +148,7 @@ h1 {
   left: 50%;
   color: #f4f4f4;
   transform: translate(-50%);
-  text-shadow: 2px 2px 0 var(--secondary-color), 2px -2px 0 var(--secondary-color), -2px 2px 0 var(--secondary-color), -2px -2px 0 var(--secondary-color), 2px 0px 0 var(--secondary-color), 0px 2px 0 var(--secondary-color), -2px 0px 0 var(--secondary-color), 0px -2px 0 var(--secondary-color);
+  text-shadow: 2px 2px 0 var(--primary-color), 2px -2px 0 var(--primary-color), -2px 2px 0 var(--primary-color), -2px -2px 0 var(--primary-color), 2px 0px 0 var(--primary-color), 0px 2px 0 var(--primary-color), -2px 0px 0 var(--primary-color), 0px -2px 0 var(--primary-color);
 }
 
 .check-txt {
