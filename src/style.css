@@ -52,7 +52,7 @@ header p,  header p #plus {
 
 main {
   position: fixed;
-  margin-top: 70px;
+  margin-bottom: 350px;
   width: var(--body-width);
   padding: 0;
   bottom: 0;

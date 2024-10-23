@@ -5,51 +5,34 @@ var currentIndex = 0,
     dataTourist = [
         {
             name: "Avenue de l'indépendance",
-            img: "../public/avenue-de-lindependance.jpg",
+            img: "/avenue-de-lindependance.jpg",
             link: ""
         },
         {
             name: "Jardin du Rova",
-            img: "../public/rova-manjakamiadana.jpg",
+            img: "/rova-manjakamiadana.jpg",
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },
         {
             name: "Zoo de Tsimbazaza",
-            img: "../public/zoo-tsimbazaza.jpg",
+            img: "/zoo-tsimbazaza.jpg",
             link: ""
         },
         {
-            name: "Hôtel Radison Blu",
-            img: "../public/radison-blu.jpg",
+            name: "Zoo de Tsimbazaza",
+            img: "/zoo-tsimbazaza.jpg",
             link: ""
-        },
+        }
     ];
 
 let selectedLink = null;
 let selectedIndex = null;
 
 window.onload = () => {
-    async function getDataFromServer() {
-        try {
-            let response = await fetch("https://immersion-touristique-production.up.railway.app/api/v1/vr", {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json'}
-            });
-            if (!response.ok)
-                throw new Error(`HTTP error! Status: ${response.status}`);
-        
-            dataTourist = await response.json();
-            console.log("Data received: ", dataTourist);
-        } catch (error) {
-            console.error("Error fetching data: ", error);
-        }
-    }
-
     function displayItems() {
         const tourristList = document.getElementById("tourrist");
         tourristList.innerHTML = "";
 
-        //getDataFromServer();
         for (let i = 0; i < itemsToShow; i++) {
             const index = (currentIndex + i) % dataTourist.length;
             tourristList.innerHTML +=
