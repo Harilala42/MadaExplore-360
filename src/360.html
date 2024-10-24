@@ -11,11 +11,6 @@
                 padding: 0;
             }
 
-            @font-face {
-                font-family: 'Roboto';
-                src: url('../public/Roboto-Bold.ttf') format('truetype');
-            }
-
             html, body {
                 position: relative;
                 overflow: hidden;
@@ -28,45 +23,6 @@
             #video360 {
                 width: 100%;
                 height: 100%;
-            }
-
-            .icon {
-                margin-right: 10px;
-                width: 50px;
-                height: 50px;
-            }
-
-            #fullscreen-btn {
-                position: absolute; 
-                bottom: 5px;       
-                right: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-image: linear-gradient(to right, #444ec4, #8b77a5);
-                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-                transition: background-color 1.5s ease;
-                color: #fff;
-                padding: 5px 10px;
-                font-size: 1.1rem;
-                font-weight: bold;
-                text-align: left;
-                text-decoration: none;
-                border: none;
-                border-radius: 50px;
-                width: 200px;
-                padding: 10px 0;
-                z-index: 2;
-            }
-
-            #fullscreen-btn:hover {
-                background-image: linear-gradient(to right, #8b77a5, #444ec4);
-                cursor: pointer;
-            }
-
-            iframe {
-                position: relative;
-                z-index: 1;
             }
 
             #loadingScreen {
@@ -107,7 +63,6 @@
             <img id="logo" src="../public/light.png" alt="Logo">
             <div id="loader"></div>
         </div>
-        <button id="fullscreen-btn"><img class="icon" src="../public/fullscreen.png" alt="FullScreen"><p class="p-btn">Mode<br>FullScreen</p></button>
         <div id="video360"></div>
 
         <script>
@@ -115,9 +70,7 @@
                 function extractYouTubeVideoId(url) {
                     const videoIdMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
 
-                    if (videoIdMatch && videoIdMatch[1])
-                        return (videoIdMatch[1]);
-                    return (null);
+                    return ((videoIdMatch && videoIdMatch[1]) ? videoIdMatch[1] : null);
                 }
 
                 function getDataFromLocalStorage() {
@@ -136,7 +89,7 @@
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
                 var player;
-                function onYouTubeIframeAPIReady() {
+                window.onYouTubeIframeAPIReady = function () {
                     player = new YT.Player('video360', {
                         height: document.querySelector('#video360').offsetHeight,
                         width: document.querySelector('#video360').offsetWidth,
@@ -154,7 +107,10 @@
                     });
                 }
 
-                var onPlayerReady = event => event.target.playVideo();
+                function onPlayerReady (event) {
+                    console.log('Player: ', player);
+                    event.target.playVideo();
+                };
 
                 const loader = document.getElementById('loadingScreen');
                 loader.style.display = 'none';
