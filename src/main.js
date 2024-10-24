@@ -1,9 +1,9 @@
 "use strict"
 
 import avenue_de_lindependance from '../public/avenue-de-lindependance.jpg';
-import rova_manjakamiadana from '../public//rova-manjakamiadana.jpg';
+import jardin_rova from '../public//rova-manjakamiadana.jpg';
 import zoo_tsimbazaza from '../public/zoo-tsimbazaza.jpg';
-import radison_blu from '../public/radison-blu.jpg';
+import jardin_ambohijatovo from '../public/jardin-ambohijatovo.jpg';
 
 const itemsToShow = 3;
 var currentIndex = 0,
@@ -15,18 +15,18 @@ var currentIndex = 0,
         },
         {
             name: "Jardin du Rova",
-            img: rova_manjakamiadana,
+            img: jardin_rova,
             link: "https://www.youtube.com/embed/WVOl1393IHo?si=_sT4QmS1YjgT-Ph51"
         },
         {
             name: "Zoo de Tsimbazaza",
             img: zoo_tsimbazaza,
-            link: ""
+            link: "https://www.youtube.com/embed/ELnpR5p6bUk?si=NxUNC44t8fmgG6TF"
         },
         {
-            name: "Hotel Radison Blu",
-            img: radison_blu,
-            link: ""
+            name: "Jardin d'Ambohijatovo",
+            img: jardin_ambohijatovo,
+            link: "https://www.youtube.com/embed/9qQr5mJJMew?si=ZnRhRRHb9fVlU015"
         }
     ];
 
