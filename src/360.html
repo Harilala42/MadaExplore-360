@@ -110,6 +110,9 @@
         </style>
     </head>
     <body>
+        <a-scene>
+            <a-videosphere id="video" src="#video360"></a-videosphere>
+        </a-scene>
         <div id="popup">
             <button id="btn-start">
                 <img class="icon" src="../public/360.png" alt="360">
@@ -120,9 +123,7 @@
             <img id="logo" src="../public/light.png" alt="Logo">
             <div id="loader"></div>
         </div>
-        <a-scene>
-            <a-videosphere id="video360" src="#videoTexture"></a-videosphere>
-        </a-scene>
+        <div id="video360"></div>
 
         <script>
             window.onload = function() {
@@ -147,9 +148,14 @@
                     }
                     var video_id = await getDataFromLocalStorage();
 
+                    const tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    const firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
                     var player;
                     window.onYouTubeIframeAPIReady = function () {
-                        player = new YT.Player('videoTexture', {
+                        player = new YT.Player('video360', {
                             height: document.querySelector('#video360').offsetHeight,
                             width: document.querySelector('#video360').offsetWidth,
                             videoId: video_id,
