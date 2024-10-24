@@ -111,7 +111,7 @@
         <div id="video360"></div>
 
         <script>
-            window.onload = function() {
+            window.onload = async function() {
                 function extractYouTubeVideoId(url) {
                     const videoIdMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
 
@@ -128,14 +128,14 @@
 
                     return (extractYouTubeVideoId(selectedItem.link));
                 }
-                let video_id = getDataFromLocalStorage();
+                var video_id = await getDataFromLocalStorage();
 
                 const tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
                 const firstScriptTag = document.getElementsByTagName('script')[0];
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                let player;
+                var player;
                 function onYouTubeIframeAPIReady() {
                     player = new YT.Player('video360', {
                         height: document.querySelector('#video360').offsetHeight,
@@ -154,7 +154,7 @@
                     });
                 }
 
-                let onPlayerReady = event => event.target.playVideo();
+                var onPlayerReady = event => event.target.playVideo();
 
                 const loader = document.getElementById('loadingScreen');
                 loader.style.display = 'none';
