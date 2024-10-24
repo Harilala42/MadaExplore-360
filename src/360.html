@@ -112,6 +112,14 @@
 
         <script>
             window.onload = function() {
+                function extractYouTubeVideoId(url) {
+                    const videoIdMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
+
+                    if (videoIdMatch && videoIdMatch[1])
+                        return (videoIdMatch[1]);
+                    return (null);
+                }
+
                 function getDataFromLocalStorage() {
                     let selectedItem = localStorage.getItem('userChoice');
                     if (selectedItem)
@@ -121,23 +129,35 @@
                     return (selectedItem.link);
                 }
                 let video360 = getDataFromLocalStorage();
-                document.getElementById("video360").innerHTML =    
-                    `<iframe id="youtube-video" width="100%" height="100%" src="${video360}&controls=0&rel=0&autoplay=1&vq=hd1080" 
-                        title="video 360" frameborder="0" 
-                        allow="autoplay; fullscreen" 
-                        allowfullscreen>
-                    </iframe>`;
+
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                let player;
+                function onYouTubeIframeAPIReady() {
+                    player = new YT.Player('youtube-video', {
+                        height: document.querySelector('#video360').offsetHeight,
+                        width: document.querySelector('#video360').offsetWidth,
+                        videoId: extractYouTubeVideoId(video360),
+                        playerVars: {
+                            autoplay: 1,        // Activer la lecture automatique
+                            controls: 0,        // Désactiver les contrôles
+                            rel: 0,             // Ne pas montrer les vidéos suggérées à la fin
+                            loop: 1,            // Activer la lecture en boucle
+                            vq: 'hd2160',       // Qualité vidéo 4K (2160p)
+                            modestbranding: 1,  // Réduire le branding YouTube
+                            fs: 1               // Activer le mode plein écran
+                        },
+                        events: { 'onReady': onPlayerReady }
+                    });
+                }
+
+                let onPlayerReady = event => event.target.setLoop(true);
 
                 const loader = document.getElementById('loadingScreen');
                 loader.style.display = 'none';
-
-                document.getElementById("fullscreen-btn").addEventListener("click", function() {
-                    let iframe = document.getElementById("youtube-video");
-                    let requestFullScreen = iframe.requestFullscreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullscreen || iframe.msRequestFullscreen;
-
-                    if (requestFullScreen)
-                        requestFullScreen.call(iframe);
-                });
             };
         </script>
     </body>
