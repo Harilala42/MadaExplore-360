@@ -58,7 +58,7 @@
                 border-radius: 50px;
                 width: 200px;
                 padding: 10px 0;
-                z-index: 2;
+                z-index: 3;
             }
 
             #fullscreen-btn:hover {
@@ -75,7 +75,7 @@
                 justify-content: center;
                 align-items: center;
                 background-color: #022d50;
-                z-index: 10;
+                z-index: 2;
             }
 
             #logo {
@@ -100,87 +100,88 @@
         </style>
     </head>
     <body>
+        <button id="fullscreen-btn"><img class="icon" src="../public/fullscreen.png" alt="FullScreen"><p class="p-btn">Mode<br>FullScreen</p></button>
         <div id="loadingScreen">
             <img id="logo" src="../public/light.png" alt="Logo">
             <div id="loader"></div>
         </div>
-        <button id="fullscreen-btn"><img class="icon" src="../public/fullscreen.png" alt="FullScreen"><p class="p-btn">Mode<br>FullScreen</p></button>
         <div id="video360"></div>
 
         <script>
-            window.onload = async function() {
-                function extractYouTubeVideoId(url) {
-                    const videoIdMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
-
-                    return ((videoIdMatch && videoIdMatch[1]) ? videoIdMatch[1] : null);
-                }
-
-                function getDataFromLocalStorage() {
-                    let selectedItem = localStorage.getItem('userChoice');
-                    if (selectedItem)
-                        selectedItem = JSON.parse(selectedItem);
-                    localStorage.removeItem('userChoice');
-
-                    return (extractYouTubeVideoId(selectedItem.link));
-                }
-                var video_id = await getDataFromLocalStorage();
-
-                const tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                const firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                var player;
-                window.onYouTubeIframeAPIReady = function () {
-                    player = new YT.Player('video360', {
-                        height: document.querySelector('#video360').offsetHeight,
-                        width: document.querySelector('#video360').offsetWidth,
-                        videoId: video_id,
-                        playerVars: {
-                            autoplay: 1,        // Activer la lecture automatique
-                            controls: 0,        // Désactiver les contrôles
-                            rel: 0,             // Ne pas montrer les vidéos suggérées à la fin
-                            loop: 1,            // Activer la lecture en boucle
-                            vq: 'hd2160',       // Qualité vidéo 4K (2160p)
-                            modestbranding: 1,  // Réduire le branding YouTube
-                            fs: 1               // Activer le mode plein écran
-                        },
-                        events: { 
-                            'onReady': onPlayerReady,
-                            'onStateChange': onPlayerStateChange
-                        }
-                    });
-                }
-
-                function enterFullscreen(element) {
-                    if (element.requestFullscreen)              // Standard Moderne
-                        element.requestFullscreen();
-                    else if (element.mozRequestFullScreen)      // Firefox
-                        element.mozRequestFullScreen();
-                    else if (element.webkitRequestFullscreen)   // Chrome, Safari et Opera
-                        element.webkitRequestFullscreen();
-                    else if (element.msRequestFullscreen)       // IE/Edge
-                        element.msRequestFullscreen();
-                }
-
-                function onPlayerStateChange (event) {
-                    if (event.data === YT.PlayerState.ENDED)
-                        window.location.href = 'https://madaexplore-360.onrender.com/';
-                };
-
-                const loader = document.getElementById('loadingScreen');
-                loader.style.display = 'none';
+            window.onload = function() {
                 const fullscreenButton = document.getElementById('fullscreen-btn');
                 fullscreenButton.style.display = 'flex';
 
-                fullscreenButton.onclick = (e) => {
+                fullscreenButton.onclick = async (e) => {
                     fullscreenButton.style.display = 'none';
+
+                    function extractYouTubeVideoId(url) {
+                        const videoIdMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
+
+                        return ((videoIdMatch && videoIdMatch[1]) ? videoIdMatch[1] : null);
+                    }
+
+                    function getDataFromLocalStorage() {
+                        let selectedItem = localStorage.getItem('userChoice');
+                        if (selectedItem)
+                            selectedItem = JSON.parse(selectedItem);
+                        localStorage.removeItem('userChoice');
+
+                        return (extractYouTubeVideoId(selectedItem.link));
+                    }
+                    var video_id = await getDataFromLocalStorage();
+
+                    const tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    const firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                    var player;
+                    window.onYouTubeIframeAPIReady = function () {
+                        player = new YT.Player('video360', {
+                            height: document.querySelector('#video360').offsetHeight,
+                            width: document.querySelector('#video360').offsetWidth,
+                            videoId: video_id,
+                            playerVars: {
+                                autoplay: 1,        // Activer la lecture automatique
+                                controls: 0,        // Désactiver les contrôles
+                                rel: 0,             // Ne pas montrer les vidéos suggérées à la fin
+                                loop: 1,            // Activer la lecture en boucle
+                                vq: 'hd2160',       // Qualité vidéo 4K (2160p)
+                                modestbranding: 1,  // Réduire le branding YouTube
+                                fs: 1               // Activer le mode plein écran
+                            },
+                            events: { 
+                                'onReady': onPlayerReady,
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
+                    }
+
+                    function enterFullscreen(element) {
+                        if (element.requestFullscreen)              // Standard Moderne
+                            element.requestFullscreen();
+                        else if (element.mozRequestFullScreen)      // Firefox
+                            element.mozRequestFullScreen();
+                        else if (element.webkitRequestFullscreen)   // Chrome, Safari et Opera
+                            element.webkitRequestFullscreen();
+                        else if (element.msRequestFullscreen)       // IE/Edge
+                            element.msRequestFullscreen();
+                    }
+
+                    function onPlayerStateChange (event) {
+                        if (event.data === YT.PlayerState.ENDED)
+                            window.location.href = 'https://madaexplore-360.onrender.com/';
+                    };
                     
                     function onPlayerReady (event) {
                         console.log('Player: ', player);
                         event.target.playVideo();
-                        enterFullscreen(document.getElementById('video360'));
                     };
+
+                    const loader = document.getElementById('loadingScreen');
+                    loader.style.display = 'none';
+                    enterFullscreen(document.getElementById('video360'));
                 };
             };
         </script>
