@@ -147,19 +147,9 @@
                     }
                     var video_id = await getDataFromLocalStorage();
 
-                    var videoTexture = document.createElement('a-video');
-                    videoTexture.setAttribute('src', `https://www.youtube.com/embed/${video_id}?autoplay=1&enablejsapi=1&playsinline=1`);
-                    const videoSphere = document.getElementById('video360');
-                    videoSphere.setAttribute('src', videoTexture.src);
-
-                    const tag = document.createElement('script');
-                    tag.src = "https://www.youtube.com/iframe_api";
-                    const firstScriptTag = document.getElementsByTagName('script')[0];
-                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
                     var player;
                     window.onYouTubeIframeAPIReady = function () {
-                        player = new YT.Player('video360', {
+                        player = new YT.Player('videoTexture', {
                             height: document.querySelector('#video360').offsetHeight,
                             width: document.querySelector('#video360').offsetWidth,
                             videoId: video_id,
