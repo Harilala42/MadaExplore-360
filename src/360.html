@@ -110,9 +110,21 @@
                     });
                 }
 
+                function enterFullscreen(element) {
+                    if (element.requestFullscreen)              // Standard Moderne
+                        element.requestFullscreen();
+                    else if (element.mozRequestFullScreen)      // Firefox
+                        element.mozRequestFullScreen();
+                    else if (element.webkitRequestFullscreen)   // Chrome, Safari et Opera
+                        element.webkitRequestFullscreen();
+                    else if (element.msRequestFullscreen)       // IE/Edge
+                        element.msRequestFullscreen();
+                }
+
                 function onPlayerReady (event) {
                     console.log('Player: ', player);
                     event.target.playVideo();
+                    enterFullscreen(document.getElementById('video360'));
                 };
 
                 function onPlayerStateChange (event) {
