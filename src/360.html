@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <link rel="icon" href="../public/lg.png" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
         <title>MadaExplore 360</title>
         <style>
             *  {
@@ -119,7 +120,9 @@
             <img id="logo" src="../public/light.png" alt="Logo">
             <div id="loader"></div>
         </div>
-        <div id="video360"></div>
+        <a-scene>
+            <a-videosphere id="video360" src="#videoTexture"></a-videosphere>
+        </a-scene>
 
         <script>
             window.onload = function() {
@@ -144,6 +147,11 @@
                     }
                     var video_id = await getDataFromLocalStorage();
 
+                    var videoTexture = document.createElement('a-video');
+                    videoTexture.setAttribute('src', `https://www.youtube.com/embed/${video_id}?autoplay=1&enablejsapi=1&playsinline=1`);
+                    const videoSphere = document.getElementById('video360');
+                    videoSphere.setAttribute('src', videoTexture.src);
+
                     const tag = document.createElement('script');
                     tag.src = "https://www.youtube.com/iframe_api";
                     const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -156,7 +164,7 @@
                             width: document.querySelector('#video360').offsetWidth,
                             videoId: video_id,
                             playerVars: {
-                                autoplay: 1,        // Activer la lecture automatique
+                                autoplay: 1,        // Activer la lecture automatique 
                                 rel: 0,             // Ne pas montrer les vidéos suggérées à la fin
                                 loop: 1,            // Activer la lecture en boucle
                                 vq: 'hd2160',       // Qualité vidéo 4K (2160p)

@@ -54,6 +54,7 @@ header p,  header p #plus {
 
 main {
   position: fixed;
+  margin-bottom: 200px;
   width: var(--body-width);
   padding: 0;
   bottom: 0;
