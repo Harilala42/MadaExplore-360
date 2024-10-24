@@ -103,13 +103,21 @@
                             modestbranding: 1,  // Réduire le branding YouTube
                             fs: 1               // Activer le mode plein écran
                         },
-                        events: { 'onReady': onPlayerReady }
+                        events: { 
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
                     });
                 }
 
                 function onPlayerReady (event) {
                     console.log('Player: ', player);
                     event.target.playVideo();
+                };
+
+                function onPlayerStateChange (event) {
+                    if (event.data === YT.PlayerState.ENDED)
+                        window.location.href = 'https://madaexplore-360.onrender.com/';
                 };
 
                 const loader = document.getElementById('loadingScreen');
