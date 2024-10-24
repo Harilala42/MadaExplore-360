@@ -123,10 +123,9 @@
         <script>
             window.onload = function() {
                 const fullscreenButton = document.getElementById('btn-start');
-                document.querySelector('#popup').style.display = 'none';
 
                 fullscreenButton.onclick = async (e) => {
-                    fullscreenButton.style.display = 'none';
+                    document.querySelector('#popup').style.display = 'none';
 
                     function extractYouTubeVideoId(url) {
                         const videoIdMatch = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
