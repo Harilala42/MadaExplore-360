@@ -126,9 +126,9 @@
                         selectedItem = JSON.parse(selectedItem);
                     localStorage.removeItem('userChoice');
 
-                    return (selectedItem.link);
+                    return (extractYouTubeVideoId(selectedItem.link));
                 }
-                let video360 = getDataFromLocalStorage();
+                let video_id = getDataFromLocalStorage();
 
                 const tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
@@ -137,10 +137,10 @@
 
                 let player;
                 function onYouTubeIframeAPIReady() {
-                    player = new YT.Player('youtube-video', {
+                    player = new YT.Player('video360', {
                         height: document.querySelector('#video360').offsetHeight,
                         width: document.querySelector('#video360').offsetWidth,
-                        videoId: extractYouTubeVideoId(video360),
+                        videoId: video_id,
                         playerVars: {
                             autoplay: 1,        // Activer la lecture automatique
                             controls: 0,        // Désactiver les contrôles
