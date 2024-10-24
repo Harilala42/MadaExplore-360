@@ -110,9 +110,6 @@
         </style>
     </head>
     <body>
-        <a-scene>
-            <a-videosphere id="video" src="#video360"></a-videosphere>
-        </a-scene>
         <div id="popup">
             <button id="btn-start">
                 <img class="icon" src="../public/360.png" alt="360">
@@ -124,6 +121,9 @@
             <div id="loader"></div>
         </div>
         <div id="video360"></div>
+        <a-scene>
+            <a-videosphere src="#video360"></a-videosphere>
+        </a-scene>
 
         <script>
             window.onload = function() {
